@@ -14,10 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let userDefaultsHandler = UserDefaultsHandler.shared
-
+    let dataBaseHandler = DataBaseHandler.shared
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
         preSettings(launchOptions)
         return true
     }
@@ -98,14 +97,16 @@ extension AppDelegate {
         // used only for debugging purposes.
         AppDelegate.getDocumentsDirectory()
         
+        dataBaseHandler.setManagedContext(appDelegate: self)
+
         // set Entry screen.
         userDefaultsHandler.isUserLoggedIn() ? presentHomePage() : presentSignInPage()
     }
     
     func presentHomePage() {
         
-        guard let homeController = mainStoryboard.instantiateViewController(withIdentifier: Constants.StoryBoardKeys.HomeController) as? HomeController else { return }
-        window?.rootViewController = homeController
+        guard let homeNavigation = mainStoryboard.instantiateViewController(withIdentifier: Constants.StoryBoardKeys.HomeNavigation) as? UINavigationController else { return }
+        window?.rootViewController = homeNavigation
         window?.makeKeyAndVisible()
     }
     

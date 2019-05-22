@@ -17,6 +17,8 @@ struct Constants {
         static let password      = "password"
         static let isbn          = "isbn"
         static let title         = "title"
+        static let cover         = "cover"
+        static let books         = "books"
         static let releaseDate   = "releaseDate"
         static let releaseNotify = "releaseNotify"
     }
@@ -28,6 +30,9 @@ struct Constants {
     struct StoryBoardKeys {
         static let Main                 = "Main"
         static let HomeController       = "HomeController"
+        static let HomeNavigation       = "HomeNavigation"
         static let LoginController      = "LoginController"
+        
+        
     }
 }

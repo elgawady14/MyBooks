@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import CoreImage
 
 extension LoginController {
     
-    func checkoutUser(_ email: String, _ password: String) {
+    func checkoutUser(_ email: String) {
         
-        guard let user = databaseHandler.isUserRegistered(email, password) else {
+        guard let user = databaseHandler.retrieveUser(email) else {
             createUser(self.emailTF.text!, self.passwordTF.text!)
             return
         }

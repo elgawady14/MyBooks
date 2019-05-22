@@ -55,7 +55,7 @@ extension UIViewController {
         guard let _ = btn1Title, let _ = btn2Title else { return }
         guard title != nil || msg != nil else { return }
         let alert = UIAlertController(title: title ?? "", message: msg ?? "", preferredStyle: .alert)
-        let action1 = UIAlertAction(title: btn1Title!, style: .default) { _ in
+        let action1 = UIAlertAction(title: btn1Title!, style: .destructive) { _ in
             btn1Handler?()
         }
         let action2 = UIAlertAction(title: btn2Title!, style: .default)
@@ -120,5 +120,40 @@ extension UIViewController {
     func present<T: UIViewController>(vc: T.Type) {
         guard let dest = self.storyboard?.instantiateViewController(withIdentifier: String(describing: vc)) as? T else { return }
         present(dest, animated: true, completion: nil)
+    }
+}
+
+
+extension UIViewController {
+    
+    func showLocalNotification(title: String, body: String, date: Date) {
+        
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.body = body
+        content.badge = 1
+        content.sound = .default
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1,
+                                                        repeats: false)
+        trigger.nextTriggerDate()
+        
+        let requestIdentifier = "MyBooksNotification"
+        let request = UNNotificationRequest(identifier: requestIdentifier,
+                                            content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request,
+                                               withCompletionHandler: { (error) in
+                                                // Handle error
+        })
+    }
+}
+
+extension UIViewController {
+    
+    func checkoutNotificationsStatus() {
+        
+        UNUserNotificationCenter.current().requestAuthorization(options:
+            [[.alert, .sound, .badge]], completionHandler: { (granted, error) in })
+        UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
     }
 }
