@@ -54,7 +54,7 @@ class LoadingView: UIView {
     open func startAnimating() {
         
         self.backgroundColor = .clear
-        self.progressBarIndicator.backgroundColor = .mainColor
+        self.progressBarIndicator.backgroundColor = .black
         self.layoutIfNeeded()
     
         show()

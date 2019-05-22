@@ -59,7 +59,7 @@ class LoginController: UIViewController {
 
         // just simulate loading.
         delay(1.0) {
-            self.checkoutUser(self.emailTF.text!, self.passwordTF.text!)
+            self.checkoutUser(self.emailTF.text!)
             self.loginBtn.isEnabled = true
         }
     }
@@ -70,8 +70,8 @@ extension LoginController {
     func presentHomePage() {
         
         guard let _ = userDefaultsHandler.getUserEmail() else { return }
-        let homeController = instantiate(HomeController.self, storyboard: .Main)
-        present(homeController)
+        guard let homeNavigation = mainStoryboard.instantiateViewController(withIdentifier: Constants.StoryBoardKeys.HomeNavigation) as? UINavigationController else { return }
+        present(homeNavigation)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
