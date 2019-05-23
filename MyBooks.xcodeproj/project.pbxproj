@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4758B5F77451F2ADCB55F8AE /* Pods_MyBooks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3F6E33AA7FE90666BEAA3D9 /* Pods_MyBooks.framework */; };
+		4883746D22963BBA00A00111 /* HomeControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4883746C22963BBA00A00111 /* HomeControllerTests.swift */; };
+		4883746F2296415800A00111 /* AddEditControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4883746E2296415800A00111 /* AddEditControllerTests.swift */; };
 		48D5AA702295E61C008F53F0 /* BookData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D5AA6F2295E61C008F53F0 /* BookData.swift */; };
 		48D5AA722295F6C4008F53F0 /* HomeController+BooksTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D5AA712295F6C4008F53F0 /* HomeController+BooksTracker.swift */; };
 		48D5AA742295FC63008F53F0 /* HomeController+UNUserNotificationCenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D5AA732295FC63008F53F0 /* HomeController+UNUserNotificationCenterDelegate.swift */; };
@@ -69,6 +71,8 @@
 
 /* Begin PBXFileReference section */
 		212BA175AF170A2DF8E68B44 /* Pods-MyBooksTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyBooksTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyBooksTests/Pods-MyBooksTests.release.xcconfig"; sourceTree = "<group>"; };
+		4883746C22963BBA00A00111 /* HomeControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeControllerTests.swift; sourceTree = "<group>"; };
+		4883746E2296415800A00111 /* AddEditControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditControllerTests.swift; sourceTree = "<group>"; };
 		48D5AA6F2295E61C008F53F0 /* BookData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookData.swift; sourceTree = "<group>"; };
 		48D5AA712295F6C4008F53F0 /* HomeController+BooksTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeController+BooksTracker.swift"; sourceTree = "<group>"; };
 		48D5AA732295FC63008F53F0 /* HomeController+UNUserNotificationCenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeController+UNUserNotificationCenterDelegate.swift"; sourceTree = "<group>"; };
@@ -176,6 +180,7 @@
 		48D5AA7E229633F9008F53F0 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				4883746C22963BBA00A00111 /* HomeControllerTests.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -183,6 +188,7 @@
 		48D5AA7F22963400008F53F0 /* AddEdit */ = {
 			isa = PBXGroup;
 			children = (
+				4883746E2296415800A00111 /* AddEditControllerTests.swift */,
 			);
 			path = AddEdit;
 			sourceTree = "<group>";
@@ -231,8 +237,8 @@
 			isa = PBXGroup;
 			children = (
 				48D5AA7D229633F1008F53F0 /* Login */,
-				48D5AA7F22963400008F53F0 /* AddEdit */,
 				48D5AA7E229633F9008F53F0 /* Home */,
+				48D5AA7F22963400008F53F0 /* AddEdit */,
 				48D5AA7A2296337A008F53F0 /* Helpers */,
 				48E8AA3F2293372D0046071F /* Info.plist */,
 			);
@@ -701,6 +707,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				48D5AA7C2296338E008F53F0 /* TestConstants.swift in Sources */,
+				4883746F2296415800A00111 /* AddEditControllerTests.swift in Sources */,
+				4883746D22963BBA00A00111 /* HomeControllerTests.swift in Sources */,
 				48D5AA812296342C008F53F0 /* LoginControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,35 +12,22 @@ import XCTest
 class LoginControllerTests: XCTestCase {
 
     let databaseHandler = DataBaseHandler.shared
-    let userDefaultsHandler = UserDefaultsHandler.shared
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+    override func setUp() {}
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+    override func tearDown() {}
 
-    func testLoginFailureForUnregisteredUser() {
+    func testLoginForUnregisteredUser() {
         
         let testExpectation = expectation(description: "LoginFailureForUnregisteredUser")
         do {
             
             let user = try databaseHandler.login(email: TestConstants.email, password: TestConstants.password)
-            XCTFail("Login had to failed for user with email: \(user.email!)")
+            XCTFail("Login had to fail for user with email: \(user.email!)")
         } catch let error as NSError {
             print(error.localizedDescription)
             testExpectation.fulfill()
         }
         wait(for: [testExpectation], timeout: TestConstants.timeoutInterval)
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

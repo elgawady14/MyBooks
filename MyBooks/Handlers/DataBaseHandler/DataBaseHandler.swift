@@ -111,17 +111,23 @@ extension DataBaseHandler {
     
     // MARK:- Book
     
-    func retrieveBooksForCurrentUser() -> [Book] {
+    func retrieveBooksForCurrentUser() throws -> [Book] {
         
-        guard let email = UserDefaultsHandler.shared.getUserEmail() else {
-            return []
+        guard let user = getCurrentUser(), let email = user.email else {
+            throw MyBooksError.unRegisteredUser
         }
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.DBKeys.User)
         fetchRequest.predicate = NSPredicate(format: "email == %@", email)
-        guard let user = try? managedContext.fetch(fetchRequest).first as? User, let booksList = user.books else { return [] }
         
-        guard let books = Array(booksList) as? [Book] else { return [] }
-        return books
+        do {
+            guard let user = try managedContext.fetch(fetchRequest).first as? User, let booksList = user.books, let books = Array(booksList) as? [Book] else {
+                return []
+            }
+            return books
+        } catch let error {
+            print("Could not fetch. \(error)")
+            throw error
+        }
     }
     
     func insertNewBookForCurrentUser(isbn: String, title: String, cover: Data, releaseDate: Date, releaseNotify: Bool) throws -> Book {

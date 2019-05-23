@@ -36,10 +36,16 @@ class HomeItemCell: UICollectionViewCell {
         guard let isbn = isbn else { return }
         do {
             try self.delegate.databaseHandler.deleteBookForCurrentUser(isbn)
-            self.delegate.books = self.delegate.databaseHandler.retrieveBooksForCurrentUser()
-            self.delegate.collectionView.reloadData()
+            
+            do {
+                self.delegate.books = try self.delegate.databaseHandler.retrieveBooksForCurrentUser()
+                self.delegate.collectionView.reloadData()
+            } catch let error as NSError {
+                self.delegate.showMessage(title: "⚠️", msg: error.localizedDescription)
+            }
+    
         } catch let error as NSError {
-            print(error.localizedDescription)
+            self.delegate.showMessage(title: "⚠️", msg: error.localizedDescription)
         }
     }
 }
