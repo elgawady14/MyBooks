@@ -14,6 +14,7 @@ enum MyBooksError: Error {
     case unRegisteredUser
     case registeredBook
     case unRegisteredBook
+    case loginInvalidCredentials
 }
 
 extension MyBooksError: LocalizedError {
@@ -28,6 +29,8 @@ extension MyBooksError: LocalizedError {
             return "No user loggedin!"
         case .unRegisteredBook:
             return "ISBN not registered!"
+        case .loginInvalidCredentials:
+            return "Either email or password is wrong!"
         }
     }
 }
@@ -85,23 +88,46 @@ extension DataBaseHandler {
             throw error
         }
     }
+    
+    func login(email: String, password: String) throws -> User {
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.DBKeys.User)
+        fetchRequest.predicate = NSPredicate(format: "email == %@ AND password == %@", email, password)
+        
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            guard !result.isEmpty, let user = result.first as? User else {
+                throw MyBooksError.loginInvalidCredentials
+            }
+            return user
+        } catch let error {
+            print("Could not fetch. \(error)")
+            throw error
+        }
+    }
 }
 
 extension DataBaseHandler {
     
     // MARK:- Book
     
-    func retrieveBooksForCurrentUser() -> [Book] {
+    func retrieveBooksForCurrentUser() throws -> [Book] {
         
-        guard let email = UserDefaultsHandler.shared.getUserEmail() else {
-            return []
+        guard let user = getCurrentUser(), let email = user.email else {
+            throw MyBooksError.unRegisteredUser
         }
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.DBKeys.User)
         fetchRequest.predicate = NSPredicate(format: "email == %@", email)
-        guard let user = try? managedContext.fetch(fetchRequest).first as? User, let booksList = user.books else { return [] }
         
-        guard let books = Array(booksList) as? [Book] else { return [] }
-        return books
+        do {
+            guard let user = try managedContext.fetch(fetchRequest).first as? User, let booksList = user.books, let books = Array(booksList) as? [Book] else {
+                return []
+            }
+            return books
+        } catch let error {
+            print("Could not fetch. \(error)")
+            throw error
+        }
     }
     
     func insertNewBookForCurrentUser(isbn: String, title: String, cover: Data, releaseDate: Date, releaseNotify: Bool) throws -> Book {

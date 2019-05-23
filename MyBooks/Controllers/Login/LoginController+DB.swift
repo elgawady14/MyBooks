@@ -11,20 +11,23 @@ import CoreImage
 
 extension LoginController {
     
-    func checkoutUser(_ email: String) {
+    func checkoutUser() {
         
         guard !newUserSwitch.isOn else {
             createUser(self.emailTF.text!, self.passwordTF.text!)
             return
         }
-        guard let user = databaseHandler.retrieveUser(email) else {
+        do {
+            
+            let user = try databaseHandler.login(email: emailTF.text!, password: passwordTF.text!)
             indicator?.stopAnimating()
-            self.showMessage(title: "⚠️", msg: "Either email or password is wrong!")
-            return
+            userDefaultsHandler.setUserEmail(user.email)
+            performSegue(withIdentifier: Constants.StoryBoardKeys.homeSegue, sender: nil)
+            
+        } catch let error as NSError {
+            indicator?.stopAnimating()
+            self.showMessage(title: "⚠️", msg: error.localizedDescription)
         }
-        indicator?.stopAnimating()
-        userDefaultsHandler.setUserEmail(user.email)
-        performSegue(withIdentifier: Constants.StoryBoardKeys.homeSegue, sender: nil)
     }
     
     func createUser(_ email: String, _ password: String) {

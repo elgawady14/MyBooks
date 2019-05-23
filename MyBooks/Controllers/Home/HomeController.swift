@@ -81,7 +81,11 @@ extension HomeController {
     
     func fetchUserBooks() {
         
-        books = databaseHandler.retrieveBooksForCurrentUser()
+        do {
+            books = try databaseHandler.retrieveBooksForCurrentUser()
+        } catch let error as NSError {
+            self.showMessage(title: "⚠️", msg: error.localizedDescription)
+        }
     }
     
     func setupCollectionView() {
