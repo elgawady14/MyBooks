@@ -10,6 +10,7 @@ The features that should be in the application is:
 # Requirements:
 - `Xcode` 10.2.1 or later.
 
+![Screenshot](Screenshots/image1.png)
 
 # Features:
 
@@ -21,3 +22,9 @@ The features that should be in the application is:
 - Code written in `Swift` 5.
 - Support `iOS` 10 and later.
 - Support Portrait/Landscape device orientation.
+
+![Screenshot](Screenshots/image2.png)
+![Screenshot](Screenshots/image3.png)
+![Screenshot](Screenshots/image4.png)
+![Screenshot](Screenshots/image5.png)
+
