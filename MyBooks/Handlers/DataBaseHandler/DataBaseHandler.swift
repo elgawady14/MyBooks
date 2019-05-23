@@ -9,9 +9,11 @@
 import CoreData
 
 enum MyBooksError: Error {
+    
     case registeredUser
+    case unRegisteredUser
     case registeredBook
-    case isbnNotFound
+    case unRegisteredBook
 }
 
 extension MyBooksError: LocalizedError {
@@ -19,12 +21,13 @@ extension MyBooksError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .registeredUser:
-            return NSLocalizedString("user_registered", comment: "")
+            return "Email already used with another user!"
         case .registeredBook:
-            return NSLocalizedString("book_registered", comment: "")
-        case .isbnNotFound:
-            return NSLocalizedString("isbnNotFound", comment: "")
-
+            return "ISBN already used with another book!"
+        case .unRegisteredUser:
+            return "No user loggedin!"
+        case .unRegisteredBook:
+            return "ISBN not registered!"
         }
     }
 }
@@ -66,6 +69,10 @@ extension DataBaseHandler {
     
     func insertNewUser(email: String, password: String) throws {
         
+        guard retrieveUser(email) == nil else {
+            throw MyBooksError.registeredUser
+        }
+        
         let entity = NSEntityDescription.entity(forEntityName: Constants.DBKeys.User, in: managedContext)!
         let user = NSManagedObject(entity: entity, insertInto: managedContext)
         user.setValue(email, forKeyPath: Constants.DBKeys.email)
@@ -97,10 +104,13 @@ extension DataBaseHandler {
         return books
     }
     
-    func insertNewBookForCurrentUser(isbn: String, title: String, cover: Data, releaseDate: Date, releaseNotify: Bool) throws -> Book? {
+    func insertNewBookForCurrentUser(isbn: String, title: String, cover: Data, releaseDate: Date, releaseNotify: Bool) throws -> Book {
         
-        guard let user = getCurrentUser() else { return nil }
+        guard let user = getCurrentUser() else { throw MyBooksError.unRegisteredUser }
         
+        guard retrieveBookForCurrentUser(isbn) == nil else {
+            throw MyBooksError.registeredBook
+        }
         let entity = NSEntityDescription.entity(forEntityName: Constants.DBKeys.Book, in: managedContext)!
         let book = NSManagedObject(entity: entity, insertInto: managedContext)
         book.setValue(isbn, forKeyPath: Constants.DBKeys.isbn)
@@ -108,7 +118,7 @@ extension DataBaseHandler {
         book.setValue(cover, forKeyPath: Constants.DBKeys.cover)
         book.setValue(releaseDate, forKeyPath: Constants.DBKeys.releaseDate)
         book.setValue(releaseNotify, forKeyPath: Constants.DBKeys.releaseNotify)
-        
+        book.setValue(user, forKeyPath: Constants.DBKeys.user)
         var books = NSMutableSet()
         if let userBooks = user.books as? NSMutableSet {
             books = userBooks
@@ -118,9 +128,9 @@ extension DataBaseHandler {
 
         do {
             try managedContext.save()
-            return book as? Book
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
+            return book as! Book
+        } catch let error {
+            print("Could not save. \(error)")
             throw error
         }
     }
@@ -151,17 +161,19 @@ extension DataBaseHandler {
         }
     }
     
-    func updateBookForCurrentUser(isbn: String, title: String, releaseDate: Date, releaseNotify: Bool) throws {
+    func updateBookForCurrentUser(oldISBN: String,newISBN: String, title: String, cover: Data, releaseDate: Date, releaseNotify: Bool) throws -> Book {
         
-        guard let book = retrieveBookForCurrentUser(isbn) else { throw MyBooksError.registeredBook }
+        guard let book = retrieveBookForCurrentUser(oldISBN) else { throw MyBooksError.unRegisteredBook }
         
-        book.setValue(isbn, forKeyPath: Constants.DBKeys.isbn)
+        book.setValue(newISBN, forKeyPath: Constants.DBKeys.isbn)
         book.setValue(title, forKeyPath: Constants.DBKeys.title)
+        book.setValue(cover, forKeyPath: Constants.DBKeys.cover)
         book.setValue(releaseDate, forKeyPath: Constants.DBKeys.releaseDate)
         book.setValue(releaseNotify, forKeyPath: Constants.DBKeys.releaseNotify)
         
         do {
             try managedContext.save()
+            return book
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
             throw error

@@ -21,6 +21,7 @@ struct Constants {
         static let books         = "books"
         static let releaseDate   = "releaseDate"
         static let releaseNotify = "releaseNotify"
+        static let user = "user"
     }
     
     struct UserDefaultsKeys {
@@ -32,7 +33,7 @@ struct Constants {
         static let HomeController       = "HomeController"
         static let HomeNavigation       = "HomeNavigation"
         static let LoginController      = "LoginController"
-        
-        
+        static let homeSegue            = "homeSegue"
+        static let unwindToLogin        = "unwindToLogin"
     }
 }

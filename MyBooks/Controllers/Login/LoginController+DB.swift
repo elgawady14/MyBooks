@@ -13,25 +13,30 @@ extension LoginController {
     
     func checkoutUser(_ email: String) {
         
-        guard let user = databaseHandler.retrieveUser(email) else {
+        guard !newUserSwitch.isOn else {
             createUser(self.emailTF.text!, self.passwordTF.text!)
             return
         }
+        guard let user = databaseHandler.retrieveUser(email) else {
+            indicator?.stopAnimating()
+            self.showMessage(title: "⚠️", msg: "Either email or password is wrong!")
+            return
+        }
+        indicator?.stopAnimating()
         userDefaultsHandler.setUserEmail(user.email)
-        presentHomePage()
+        performSegue(withIdentifier: Constants.StoryBoardKeys.homeSegue, sender: nil)
     }
     
     func createUser(_ email: String, _ password: String) {
         
         do {
             try self.databaseHandler.insertNewUser(email: self.emailTF.text!, password: self.passwordTF.text!)
-            self.showOneActionAlert(title: "👍", msg: "User created successfully!", btnTitle: "Ok", btnHandler: {
-                self.userDefaultsHandler.setUserEmail(email)
-                self.presentHomePage()
-            })
-            
+            indicator?.stopAnimating()
+            self.userDefaultsHandler.setUserEmail(email)
+            self.performSegue(withIdentifier: Constants.StoryBoardKeys.homeSegue, sender: nil)
         } catch let error as NSError {
-            self.showMessage(title: "⚠️", msg: error.description)
+            indicator?.stopAnimating()
+            self.showMessage(title: "⚠️", msg: error.localizedDescription)
         }
     }
 }

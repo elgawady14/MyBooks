@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		4758B5F77451F2ADCB55F8AE /* Pods_MyBooks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3F6E33AA7FE90666BEAA3D9 /* Pods_MyBooks.framework */; };
+		48D5AA702295E61C008F53F0 /* BookData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D5AA6F2295E61C008F53F0 /* BookData.swift */; };
+		48D5AA722295F6C4008F53F0 /* HomeController+BooksTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D5AA712295F6C4008F53F0 /* HomeController+BooksTracker.swift */; };
+		48D5AA742295FC63008F53F0 /* HomeController+UNUserNotificationCenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D5AA732295FC63008F53F0 /* HomeController+UNUserNotificationCenterDelegate.swift */; };
+		48D5AA762295FCCA008F53F0 /* HomeController+UIImagePickerControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D5AA752295FCCA008F53F0 /* HomeController+UIImagePickerControllerDelegate.swift */; };
+		48D5AA792295FEEF008F53F0 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D5AA782295FEEF008F53F0 /* UIImageExtensions.swift */; };
 		48E8AA292293372C0046071F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E8AA282293372C0046071F /* AppDelegate.swift */; };
 		48E8AA2B2293372C0046071F /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E8AA2A2293372C0046071F /* LoginController.swift */; };
 		48E8AA2E2293372C0046071F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48E8AA2C2293372C0046071F /* Main.storyboard */; };
@@ -47,6 +52,7 @@
 		48E8AAAC22948B410046071F /* img5.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E8AAA522948B410046071F /* img5.png */; };
 		48E8AAAD22948B410046071F /* img1.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E8AAA622948B410046071F /* img1.png */; };
 		48E8AAB02294B4430046071F /* HomeController+DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E8AAAF2294B4430046071F /* HomeController+DB.swift */; };
+		48E8AAB82294F1DA0046071F /* AddEditController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E8AAB72294F1DA0046071F /* AddEditController+UITextFieldDelegate.swift */; };
 		EE595D3FF15A91ED79367E92 /* Pods_MyBooksTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8946B2D2B515D716DE6413F6 /* Pods_MyBooksTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +68,11 @@
 
 /* Begin PBXFileReference section */
 		212BA175AF170A2DF8E68B44 /* Pods-MyBooksTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyBooksTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyBooksTests/Pods-MyBooksTests.release.xcconfig"; sourceTree = "<group>"; };
+		48D5AA6F2295E61C008F53F0 /* BookData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookData.swift; sourceTree = "<group>"; };
+		48D5AA712295F6C4008F53F0 /* HomeController+BooksTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeController+BooksTracker.swift"; sourceTree = "<group>"; };
+		48D5AA732295FC63008F53F0 /* HomeController+UNUserNotificationCenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeController+UNUserNotificationCenterDelegate.swift"; sourceTree = "<group>"; };
+		48D5AA752295FCCA008F53F0 /* HomeController+UIImagePickerControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeController+UIImagePickerControllerDelegate.swift"; sourceTree = "<group>"; };
+		48D5AA782295FEEF008F53F0 /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		48E8AA252293372C0046071F /* MyBooks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBooks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48E8AA282293372C0046071F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48E8AA2A2293372C0046071F /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -108,6 +119,7 @@
 		48E8AAB12294DC790046071F /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		48E8AAB32294DC850046071F /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		48E8AAB52294DC8D0046071F /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		48E8AAB72294F1DA0046071F /* AddEditController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddEditController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
 		6B63693B59105E82AFA41B88 /* Pods-MyBooks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyBooks.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyBooks/Pods-MyBooks.release.xcconfig"; sourceTree = "<group>"; };
 		8946B2D2B515D716DE6413F6 /* Pods_MyBooksTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyBooksTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DB6AC2336712A58679172D7 /* Pods-MyBooks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyBooks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyBooks/Pods-MyBooks.debug.xcconfig"; sourceTree = "<group>"; };
@@ -135,6 +147,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		48D5AA772295FEDD008F53F0 /* UIImageExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				48D5AA782295FEEF008F53F0 /* UIImageExtensions.swift */,
+			);
+			path = UIImageExtensions;
+			sourceTree = "<group>";
+		};
 		48E8AA1C2293372C0046071F = {
 			isa = PBXGroup;
 			children = (
@@ -187,7 +207,7 @@
 		48E8AA48229345940046071F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				48E8AA9322939F0D0046071F /* AddEditController */,
+				48E8AA9322939F0D0046071F /* AddEdit */,
 				48E8AA83229374D60046071F /* Home */,
 				48E8AA642293492B0046071F /* Login */,
 			);
@@ -204,6 +224,7 @@
 		48E8AA4A229345A40046071F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				48D5AA6F2295E61C008F53F0 /* BookData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -233,6 +254,7 @@
 		48E8AA4D229345C00046071F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				48D5AA772295FEDD008F53F0 /* UIImageExtensions */,
 				48E8AA8C22938C5A0046071F /* StringExtensions */,
 				48E8AA5C2293468C0046071F /* NSObjectExtensions */,
 				48E8AA5A2293468C0046071F /* UICollectionViewExtensions */,
@@ -356,9 +378,11 @@
 			children = (
 				48E8AA982294855D0046071F /* Cells */,
 				48E8AA84229374EC0046071F /* HomeController.swift */,
+				48D5AA712295F6C4008F53F0 /* HomeController+BooksTracker.swift */,
 				48E8AA96229484E60046071F /* HomeController+UICollectionViewDataSource.swift */,
 				48E8AA9D229485C20046071F /* HomeController+UICollectionViewDelegate.swift */,
 				48E8AAAF2294B4430046071F /* HomeController+DB.swift */,
+				48D5AA732295FC63008F53F0 /* HomeController+UNUserNotificationCenterDelegate.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -387,12 +411,14 @@
 			path = StringExtensions;
 			sourceTree = "<group>";
 		};
-		48E8AA9322939F0D0046071F /* AddEditController */ = {
+		48E8AA9322939F0D0046071F /* AddEdit */ = {
 			isa = PBXGroup;
 			children = (
 				48E8AA9422939F280046071F /* AddEditController.swift */,
+				48E8AAB72294F1DA0046071F /* AddEditController+UITextFieldDelegate.swift */,
+				48D5AA752295FCCA008F53F0 /* HomeController+UIImagePickerControllerDelegate.swift */,
 			);
-			path = AddEditController;
+			path = AddEdit;
 			sourceTree = "<group>";
 		};
 		48E8AA982294855D0046071F /* Cells */ = {
@@ -600,14 +626,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				48E8AA622293468C0046071F /* UICollectionViewExtensions.swift in Sources */,
+				48D5AA742295FC63008F53F0 /* HomeController+UNUserNotificationCenterDelegate.swift in Sources */,
 				48E8AA82229373880046071F /* RoundedImage.swift in Sources */,
 				48E8AAB02294B4430046071F /* HomeController+DB.swift in Sources */,
 				48E8AA2B2293372C0046071F /* LoginController.swift in Sources */,
+				48D5AA762295FCCA008F53F0 /* HomeController+UIImagePickerControllerDelegate.swift in Sources */,
 				48E8AA612293468C0046071F /* UIViewExtensions.swift in Sources */,
 				48E8AA292293372C0046071F /* AppDelegate.swift in Sources */,
 				48E8AA5E2293468C0046071F /* UIStoryboardExtensions.swift in Sources */,
 				48E8AA632293468C0046071F /* NSObjectExtensions.swift in Sources */,
 				48E8AA51229346320046071F /* UserDefaultsExtensions.swift in Sources */,
+				48D5AA702295E61C008F53F0 /* BookData.swift in Sources */,
+				48D5AA792295FEEF008F53F0 /* UIImageExtensions.swift in Sources */,
 				48E8AA85229374EC0046071F /* HomeController.swift in Sources */,
 				48E8AA7F229373880046071F /* RoundedView.swift in Sources */,
 				48E8AA6B22934DEA0046071F /* DataBaseHandler.swift in Sources */,
@@ -621,10 +651,12 @@
 				48E8AA9E229485C20046071F /* HomeController+UICollectionViewDelegate.swift in Sources */,
 				48E8AA80229373880046071F /* RoundedButton.swift in Sources */,
 				48E8AA5F2293468C0046071F /* UIColorExtensions.swift in Sources */,
+				48E8AAB82294F1DA0046071F /* AddEditController+UITextFieldDelegate.swift in Sources */,
 				48E8AA7722935CCD0046071F /* Constants.swift in Sources */,
 				48E8AA882293767E0046071F /* LoadingView.swift in Sources */,
 				48E8AA97229484E60046071F /* HomeController+UICollectionViewDataSource.swift in Sources */,
 				48E8AA9222938FC20046071F /* LoginController+UITextFieldDelegate.swift in Sources */,
+				48D5AA722295F6C4008F53F0 /* HomeController+BooksTracker.swift in Sources */,
 				48E8AA9522939F280046071F /* AddEditController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

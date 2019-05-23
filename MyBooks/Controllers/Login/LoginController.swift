@@ -12,7 +12,6 @@ class LoginController: UIViewController {
 
     @IBOutlet weak var emailTF: UITextField! {
         didSet {
-            emailTF.becomeFirstResponder()
             emailTF.delegate = self
         }
     }
@@ -22,6 +21,7 @@ class LoginController: UIViewController {
         }
     }
     @IBOutlet weak var secureImg: UIImageView!
+    @IBOutlet weak var newUserSwitch: UISwitch!
     @IBOutlet weak var loginBtn: UIButton!
 
     var indicator: LoadingView?
@@ -37,7 +37,7 @@ class LoginController: UIViewController {
         
         super.viewDidLayoutSubviews()
         guard indicator == nil else { return }
-        indicator = LoadingView(yOrigin: loginBtn.frame.origin.y - 25, theSuperView: view)
+        indicator = LoadingView(yOrigin: loginBtn.frame.origin.y - 15, theSuperView: view)
     }
 
     @IBAction func secureBtnAction() {
@@ -63,16 +63,23 @@ class LoginController: UIViewController {
             self.loginBtn.isEnabled = true
         }
     }
+    
+    @IBAction func newUserSwitchAction(_ sender: UISwitch) {
+        loginBtn.setTitle(sender.isOn ? "Signup" : "Login", for: .normal)
+    }
+    
+    @IBAction func unwindToLogin(segue: UIStoryboardSegue) {}
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard segue.identifier == Constants.StoryBoardKeys.homeSegue, let homeController = (segue.destination as? UINavigationController)?.viewControllers.first as? HomeController else {
+            return
+        }
+        homeController.entryPoint = .loginScreen
+    }
 }
 
 extension LoginController {
-    
-    func presentHomePage() {
-        
-        guard let _ = userDefaultsHandler.getUserEmail() else { return }
-        guard let homeNavigation = mainStoryboard.instantiateViewController(withIdentifier: Constants.StoryBoardKeys.HomeNavigation) as? UINavigationController else { return }
-        present(homeNavigation)
-    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
