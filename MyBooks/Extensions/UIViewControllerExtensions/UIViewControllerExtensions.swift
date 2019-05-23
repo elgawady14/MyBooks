@@ -126,15 +126,15 @@ extension UIViewController {
 
 extension UIViewController {
     
-    func showLocalNotification(title: String, body: String, date: Date) {
+    func scheduleLocalNotification(title: String, body: String, date: Date) {
         
         let content = UNMutableNotificationContent()
         content.title = title
         content.body = body
         content.badge = 1
         content.sound = .default
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1,
-                                                        repeats: false)
+        let triggerWeekly = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute], from: date)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerWeekly, repeats: false)
         trigger.nextTriggerDate()
         
         let requestIdentifier = "MyBooksNotification"

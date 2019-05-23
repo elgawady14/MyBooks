@@ -12,7 +12,10 @@ extension HomeController: UICollectionViewDelegate {
     
     // MARK:- DELEGATE
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        navigateToAddEditController(OperationType.edit, books[indexPath.item])
+        
+        let book = books[indexPath.item]
+        let bookData = BookData(title: book.title, oldISBN: book.isbn, newISBN: book.isbn, cover: book.cover, releaseDate: book.releaseDate, notifiyRelease: book.releaseNotify)
+        navigateToAddEditController(OperationType.edit, bookData)
     }
 }
 

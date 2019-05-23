@@ -7,11 +7,15 @@
 //
 
 import UIKit
-import UserNotifications
 
 enum EditMode {
     case idle
     case active
+}
+
+enum EntryPoint {
+    case appDelegate
+    case loginScreen
 }
 
 class HomeController: UIViewController {
@@ -24,14 +28,13 @@ class HomeController: UIViewController {
     }
     
     @IBOutlet weak var editButton: UIButton!
-    //    let imgs = ["img1", "img2", "img3", "img4", "img5", "img6", "img7"]
-//    let titles = ["img1", "img2", "img3", "img4", "img5", "img6", "img7"]
 
     let databaseHandler = DataBaseHandler.shared
     let userDefaultsHandler = UserDefaultsHandler.shared
     var books = [Book]()
     var editMode: EditMode = .idle
-
+    var entryPoint = EntryPoint.appDelegate
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         preSettings()
@@ -46,9 +49,24 @@ class HomeController: UIViewController {
     }
     
     @IBAction func addButtonAction(_ sender: Any) {
-        navigateToAddEditController(OperationType.add)
-        //showLocalNotification("A new book 📖  has been 📕 released!", "Arab History book just released.")
+        
+        let bookData = BookData(title: nil, oldISBN: nil, newISBN: nil, cover: nil, releaseDate: nil, notifiyRelease: false)
+        navigateToAddEditController(OperationType.add, bookData)
     }
+    
+    @IBAction func logoutButtonAction(_ sender: Any) {
+        
+        // remove user credentials
+        userDefaultsHandler.setUserEmail(nil)
+        
+        guard entryPoint == .loginScreen else {
+            present(instantiate(LoginController.self, storyboard: .Main))
+            return
+        }
+        // unwind to login screen.
+        performSegue(withIdentifier: Constants.StoryBoardKeys.unwindToLogin, sender: nil)
+    }
+    
 }
 
 extension HomeController {
@@ -56,9 +74,14 @@ extension HomeController {
     func preSettings() {
         
         checkoutNotificationsStatus()
-        books = databaseHandler.retrieveBooksForCurrentUser()
+        fetchUserBooks()
         setupCollectionView()
         //addBooksForUser("a@a.co")
+    }
+    
+    func fetchUserBooks() {
+        
+        books = databaseHandler.retrieveBooksForCurrentUser()
     }
     
     func setupCollectionView() {
@@ -66,20 +89,14 @@ extension HomeController {
         collectionView.registerNib(className: HomeItemCell.self)
     }
     
-    func navigateToAddEditController(_ operationType: OperationType, _ selectedBook: Book? = nil) {
+    func navigateToAddEditController(_ operationType: OperationType, _ bookData: BookData) {
         
         let addEditController = instantiate(AddEditController.self, storyboard: .Main)
         addEditController.operationType = operationType
-        addEditController.selectedBook = selectedBook
+        addEditController.bookData = bookData
+        addEditController.booksTrackerDelegate = self
         push(viewController: addEditController)
     }
 }
 
-extension HomeController: UNUserNotificationCenterDelegate {
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        
-        completionHandler([.alert, .sound])
-    }
-}
 

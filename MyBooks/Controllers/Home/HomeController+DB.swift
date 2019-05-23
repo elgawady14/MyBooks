@@ -41,7 +41,7 @@ extension HomeController {
             let book = try self.databaseHandler.insertNewBookForCurrentUser(isbn: isbn, title: title, cover: cover, releaseDate: releaseDate, releaseNotify: releaseNotify)
             return book
         } catch let error as NSError {
-            print(error.description)
+            print(error.localizedDescription)
             return nil
         }
     }

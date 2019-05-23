@@ -39,7 +39,7 @@ class HomeItemCell: UICollectionViewCell {
             self.delegate.books = self.delegate.databaseHandler.retrieveBooksForCurrentUser()
             self.delegate.collectionView.reloadData()
         } catch let error as NSError {
-            print(error.description)
+            print(error.localizedDescription)
         }
     }
 }
