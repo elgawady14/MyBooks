@@ -8,17 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		4758B5F77451F2ADCB55F8AE /* Pods_MyBooks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3F6E33AA7FE90666BEAA3D9 /* Pods_MyBooks.framework */; };
+		4883746D22963BBA00A00111 /* HomeControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4883746C22963BBA00A00111 /* HomeControllerTests.swift */; };
+		4883746F2296415800A00111 /* AddEditControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4883746E2296415800A00111 /* AddEditControllerTests.swift */; };
 		48D5AA702295E61C008F53F0 /* BookData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D5AA6F2295E61C008F53F0 /* BookData.swift */; };
 		48D5AA722295F6C4008F53F0 /* HomeController+BooksTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D5AA712295F6C4008F53F0 /* HomeController+BooksTracker.swift */; };
 		48D5AA742295FC63008F53F0 /* HomeController+UNUserNotificationCenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D5AA732295FC63008F53F0 /* HomeController+UNUserNotificationCenterDelegate.swift */; };
 		48D5AA762295FCCA008F53F0 /* HomeController+UIImagePickerControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D5AA752295FCCA008F53F0 /* HomeController+UIImagePickerControllerDelegate.swift */; };
 		48D5AA792295FEEF008F53F0 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D5AA782295FEEF008F53F0 /* UIImageExtensions.swift */; };
+		48D5AA7C2296338E008F53F0 /* TestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D5AA7B2296338E008F53F0 /* TestConstants.swift */; };
+		48D5AA812296342C008F53F0 /* LoginControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D5AA802296342C008F53F0 /* LoginControllerTests.swift */; };
 		48E8AA292293372C0046071F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E8AA282293372C0046071F /* AppDelegate.swift */; };
 		48E8AA2B2293372C0046071F /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E8AA2A2293372C0046071F /* LoginController.swift */; };
 		48E8AA2E2293372C0046071F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48E8AA2C2293372C0046071F /* Main.storyboard */; };
 		48E8AA302293372D0046071F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48E8AA2F2293372D0046071F /* Assets.xcassets */; };
 		48E8AA332293372D0046071F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48E8AA312293372D0046071F /* LaunchScreen.storyboard */; };
-		48E8AA3E2293372D0046071F /* MyBooksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E8AA3D2293372D0046071F /* MyBooksTests.swift */; };
 		48E8AA51229346320046071F /* UserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E8AA50229346320046071F /* UserDefaultsExtensions.swift */; };
 		48E8AA5E2293468C0046071F /* UIStoryboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E8AA532293468C0046071F /* UIStoryboardExtensions.swift */; };
 		48E8AA5F2293468C0046071F /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E8AA552293468C0046071F /* UIColorExtensions.swift */; };
@@ -68,11 +71,15 @@
 
 /* Begin PBXFileReference section */
 		212BA175AF170A2DF8E68B44 /* Pods-MyBooksTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyBooksTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyBooksTests/Pods-MyBooksTests.release.xcconfig"; sourceTree = "<group>"; };
+		4883746C22963BBA00A00111 /* HomeControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeControllerTests.swift; sourceTree = "<group>"; };
+		4883746E2296415800A00111 /* AddEditControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditControllerTests.swift; sourceTree = "<group>"; };
 		48D5AA6F2295E61C008F53F0 /* BookData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookData.swift; sourceTree = "<group>"; };
 		48D5AA712295F6C4008F53F0 /* HomeController+BooksTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeController+BooksTracker.swift"; sourceTree = "<group>"; };
 		48D5AA732295FC63008F53F0 /* HomeController+UNUserNotificationCenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeController+UNUserNotificationCenterDelegate.swift"; sourceTree = "<group>"; };
 		48D5AA752295FCCA008F53F0 /* HomeController+UIImagePickerControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeController+UIImagePickerControllerDelegate.swift"; sourceTree = "<group>"; };
 		48D5AA782295FEEF008F53F0 /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
+		48D5AA7B2296338E008F53F0 /* TestConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConstants.swift; sourceTree = "<group>"; };
+		48D5AA802296342C008F53F0 /* LoginControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginControllerTests.swift; sourceTree = "<group>"; };
 		48E8AA252293372C0046071F /* MyBooks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBooks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48E8AA282293372C0046071F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48E8AA2A2293372C0046071F /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -81,7 +88,6 @@
 		48E8AA322293372D0046071F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48E8AA342293372D0046071F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48E8AA392293372D0046071F /* MyBooksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyBooksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		48E8AA3D2293372D0046071F /* MyBooksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBooksTests.swift; sourceTree = "<group>"; };
 		48E8AA3F2293372D0046071F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48E8AA50229346320046071F /* UserDefaultsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtensions.swift; sourceTree = "<group>"; };
 		48E8AA532293468C0046071F /* UIStoryboardExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStoryboardExtensions.swift; sourceTree = "<group>"; };
@@ -155,6 +161,38 @@
 			path = UIImageExtensions;
 			sourceTree = "<group>";
 		};
+		48D5AA7A2296337A008F53F0 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				48D5AA7B2296338E008F53F0 /* TestConstants.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		48D5AA7D229633F1008F53F0 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				48D5AA802296342C008F53F0 /* LoginControllerTests.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		48D5AA7E229633F9008F53F0 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				4883746C22963BBA00A00111 /* HomeControllerTests.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		48D5AA7F22963400008F53F0 /* AddEdit */ = {
+			isa = PBXGroup;
+			children = (
+				4883746E2296415800A00111 /* AddEditControllerTests.swift */,
+			);
+			path = AddEdit;
+			sourceTree = "<group>";
+		};
 		48E8AA1C2293372C0046071F = {
 			isa = PBXGroup;
 			children = (
@@ -198,7 +236,10 @@
 		48E8AA3C2293372D0046071F /* MyBooksTests */ = {
 			isa = PBXGroup;
 			children = (
-				48E8AA3D2293372D0046071F /* MyBooksTests.swift */,
+				48D5AA7D229633F1008F53F0 /* Login */,
+				48D5AA7E229633F9008F53F0 /* Home */,
+				48D5AA7F22963400008F53F0 /* AddEdit */,
+				48D5AA7A2296337A008F53F0 /* Helpers */,
 				48E8AA3F2293372D0046071F /* Info.plist */,
 			);
 			path = MyBooksTests;
@@ -665,7 +706,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48E8AA3E2293372D0046071F /* MyBooksTests.swift in Sources */,
+				48D5AA7C2296338E008F53F0 /* TestConstants.swift in Sources */,
+				4883746F2296415800A00111 /* AddEditControllerTests.swift in Sources */,
+				4883746D22963BBA00A00111 /* HomeControllerTests.swift in Sources */,
+				48D5AA812296342C008F53F0 /* LoginControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
