@@ -14,6 +14,7 @@ enum MyBooksError: Error {
     case unRegisteredUser
     case registeredBook
     case unRegisteredBook
+    case loginInvalidCredentials
 }
 
 extension MyBooksError: LocalizedError {
@@ -28,6 +29,8 @@ extension MyBooksError: LocalizedError {
             return "No user loggedin!"
         case .unRegisteredBook:
             return "ISBN not registered!"
+        case .loginInvalidCredentials:
+            return "Either email or password is wrong!"
         }
     }
 }
@@ -82,6 +85,23 @@ extension DataBaseHandler {
             try managedContext.save()
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
+            throw error
+        }
+    }
+    
+    func login(email: String, password: String) throws -> User {
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.DBKeys.User)
+        fetchRequest.predicate = NSPredicate(format: "email == %@ AND password == %@", email, password)
+        
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            guard !result.isEmpty, let user = result.first as? User else {
+                throw MyBooksError.loginInvalidCredentials
+            }
+            return user
+        } catch let error {
+            print("Could not fetch. \(error)")
             throw error
         }
     }

@@ -59,7 +59,7 @@ class LoginController: UIViewController {
 
         // just simulate loading.
         delay(1.0) {
-            self.checkoutUser(self.emailTF.text!)
+            self.checkoutUser()
             self.loginBtn.isEnabled = true
         }
     }
